@@ -1,0 +1,98 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: 'Cairo', 'Tajawal', system-ui, -apple-system, sans-serif;
+    direction: rtl;
+    transition: background-color 0.4s ease, color 0.4s ease;
+  }
+}
+
+/* Custom Neo-Brutalist shadow utilities */
+.neo-shadow-light {
+  box-shadow: 4px 4px 0px #111827;
+}
+
+.neo-shadow-dark {
+  box-shadow: 4px 4px 0px #d97706; /* warm amber contrast in dark mode */
+}
+
+/* Smooth transitions */
+.transition-all-smooth {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fade-in-scale {
+  animation: fadeInScale 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ==========================================
+   A4 PRINT STYLING (@media print)
+   ========================================== */
+@media print {
+  body {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    font-size: 12pt !important;
+    line-height: 1.5 !important;
+  }
+
+  /* Hide all interactive UI elements during printing */
+  header, footer, .no-print, button {
+    display: none !important;
+  }
+
+  /* Ensure printable area takes full width without scrollbars */
+  .print-container {
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+
+  /* A4 Page layout adjustments */
+  @page {
+    size: A4;
+    margin: 20mm 15mm 20mm 15mm;
+  }
+
+  /* Prevent page breaks inside question boxes */
+  .print-avoid-break {
+    page-break-inside: avoid;
+    break-inside: avoid;
+    margin-bottom: 15px !important;
+    border: 1px solid #cbd5e1 !important;
+    padding: 12px !important;
+    background-color: #f8fafc !important;
+    border-radius: 8px !important;
+  }
+
+  /* Force page breaks where appropriate */
+  .print-page-break {
+    page-break-after: always;
+    break-after: page;
+  }
+
+  /* Ensure high contrast colors in print */
+  .print-text-red {
+    color: #b91c1c !important;
+    font-weight: bold !important;
+  }
+
+  .print-text-green {
+    color: #15803d !important;
+    font-weight: bold !important;
+  }
+}
