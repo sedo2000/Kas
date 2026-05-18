@@ -1864,23 +1864,7 @@ export const App: React.FC = () => {
                 </div>
 
                 {/* Simulated Telegram WebApp Referral Box */}
-                <div className={`p-4 rounded-2xl border-2 transition-all-smooth flex items-center gap-4 ${
-                  theme === 'dark' ? 'bg-[#1f140d] border-[#3b2719]' : 'bg-[#eee7dc] border-[#d1c7bd]'
-                }`}>
-                  <div className="w-11 h-11 rounded-full bg-blue-500/20 border border-blue-500/40 flex items-center justify-center text-blue-500 shrink-0">
-                    <Send className="w-5 h-5" />
-                  </div>
-                  <div className="text-right flex-1">
-                    <div className="flex items-center gap-2 justify-start">
-                      <span className="text-xs font-black text-blue-500">متصل عبر تليجرام (Telegram WebApp)</span>
-                      <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                    </div>
-                    <p className={`text-[11px] font-medium mt-0.5 leading-relaxed ${theme === 'dark' ? 'text-[#a8988b]' : 'text-[#6b635a]'}`}>
-                      تم التحقق من بيئة تطبيق تليجرام المصغر بنجاح. سيتم ربط النتيجة بحسابك تلقائياً.
-                    </p>
-                  </div>
-                </div>
-
+<WelcomeComponent />
                 {/* Submit Button */}
                 <button
                   type="submit"
