@@ -4,13 +4,48 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>نظام الاختبارات الأكاديمية — أسواق المال (المرحلة الثالثة)</title>
-    <!-- Google Fonts import for elegant Arabic typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+    
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+
+    <script>
+      // جلب كائن التلغرام من الواجهة المصغرة
+      const tg = window.Telegram.WebApp;
+
+      // توسيع الواجهة لتملأ شاشة الهاتف بالكامل بمجرد الدخول
+      tg.expand();
+
+      // قراءة بيانات المستخدم إذا دخل من التلغرام
+      if (tg.initDataUnsafe && tg.initDataUnsafe.user) {
+          const user = tg.initDataUnsafe.user;
+          
+          const telegramId = user.id; // الآيدي الخاص بالطالب
+          const firstName = user.first_name; // اسمه الأول على تلغرام
+          const username = user.username ? `@${user.username}` : 'لا يوجد معرف';
+          const photoUrl = user.photo_url || 'https://via.placeholder.com/150'; // صورة حسابه
+
+          // طباعة الترحيب في واجهة الموقع لطلبة المرحلة الثالثة
+          if(document.getElementById('welcome-msg')) {
+              document.getElementById('welcome-msg').innerText = `مرحباً بك يا ${firstName}`;
+          }
+          if(document.getElementById('tg-id')) {
+              document.getElementById('tg-id').innerText = `معرف الحساب الرقمي: ${telegramId}`;
+          }
+          if(document.getElementById('tg-avatar')) {
+              document.getElementById('tg-avatar').src = photoUrl;
+          }
+      } else {
+          // في حال فتح الموقع من متصفح عادي وليس من التلغرام
+          if(document.getElementById('welcome-msg')) {
+              document.getElementById('welcome-msg').innerText = "مرحباً بك عزيزي الطالب (دخول من متصفح خارجي)";
+          }
+      }
+    </script>
   </body>
 </html>
