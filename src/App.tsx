@@ -18,6 +18,7 @@ import {
   Printer,
   ExternalLink
 } from 'lucide-react';
+import { WelcomeComponent } from './WelcomeComponent';
 
 // ==========================================
 // TYPES & DATA STRUCTURES
